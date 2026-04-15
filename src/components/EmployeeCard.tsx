@@ -51,4 +51,3 @@ export function EmployeeCard({ employee }: { employee: EmployeeWithDept }) {
     </Link>
   );
 }
-

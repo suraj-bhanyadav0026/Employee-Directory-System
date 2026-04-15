@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useTransition } from 'react';
+import { cn } from './utils';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 interface Department {
-  _id: string;
+  _id: { toString(): string };
   name: string;
   floor: number;
 }

@@ -11,7 +11,7 @@ export default async function Page() {
   ]);
 
   const employees = employeesPromise.status === 'fulfilled' ? employeesPromise.value : [];
-const departments = departmentsPromise.status === 'fulfilled' ? departmentsPromise.value.map(d => ({ ...d, _id: d._id.toString() })) : []; 
+  const departments = departmentsPromise.status === 'fulfilled' ? departmentsPromise.value : [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -63,7 +63,7 @@ const departments = departmentsPromise.status === 'fulfilled' ? departmentsPromi
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                   {employees.map((employee) => (
-                    <Suspense key={employee._id?.toString()} fallback={<div>Loading...</div>}>
+                    <Suspense key={employee._id?.toString() || ''} fallback={<div>Loading...</div>}>
                       <EmployeeCard employee={employee} />
                     </Suspense>
                   ))}
@@ -76,4 +76,3 @@ const departments = departmentsPromise.status === 'fulfilled' ? departmentsPromi
     </div>
   );
 }
-
