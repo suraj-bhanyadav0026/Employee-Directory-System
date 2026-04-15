@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId, Db, Collection } from 'mongodb';
 import { Employee, Department, EmployeeWithDept } from './types';
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI!;
 
 if (!MONGODB_URI) {
   throw new Error('Please define MONGODB_URI in .env.local');
