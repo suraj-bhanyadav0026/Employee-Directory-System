@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb';
 import { ObjectId } from 'mongodb';
 import type { Department, Employee } from './types';
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_URI = 'mongodb://localhost:27017';
 
 async function seed() {
   const client = new MongoClient(MONGODB_URI);
