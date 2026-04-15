@@ -9,7 +9,7 @@ export interface Department {
 }
 
 export interface Employee {
-  _id: ObjectId;
+  _id?: ObjectId;
   name: string;
   position: string;
   salary: number;
@@ -28,5 +28,5 @@ export const addEmployeeSchema = z.object({
   departmentId: z.string().min(1, 'Department required'),
 });
 
-export type AddEmployeeInput = z.infer<typeof addEmployeeSchema> & { departmentId: string };
+export type AddEmployeeInput = z.infer<typeof addEmployeeSchema>;
 

@@ -1,7 +1,7 @@
- 'use server'
+'use server'
 
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+import { ObjectId } from 'mongodb';
 import { z } from 'zod';
 import { getDb } from '@/lib/db';
 import { addEmployeeSchema, AddEmployeeInput } from '@/lib/types';
@@ -33,7 +33,7 @@ export async function addEmployee(formData: FormData, departments: Department[])
       name: input.name,
       position: input.position,
       salary: input.salary,
-      departmentId: input.departmentId,
+      departmentId: new ObjectId(input.departmentId),
     });
 
     revalidatePath('/');
@@ -44,3 +44,5 @@ export async function addEmployee(formData: FormData, departments: Department[])
       error: { _errors: ['Failed to add employee. Please try again.'] },
     };
   }
+}
+
